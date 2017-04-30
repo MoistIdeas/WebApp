@@ -5154,10 +5154,7 @@ wellLoved = function() {
             return R * c;
         },
         getCoordinate: function( event ){
-        	var getLatitude = event.latLng.lat();
-        	var getLongitude = event.latLng.lng();
-        	this.targetLocation = { "targetLatitude":getLatitude, "targetLongitude":getLongitude};
-        	console.log(this.targetLocation);
+        	this.targetLocation = { "targetLatitude":map.center.lat(), "targetLongitude":map.center.lng() };
         },
         getNearestPoint: function() {
         	console.log("what");
@@ -5167,5 +5164,5 @@ wellLoved = function() {
 
 // set Google Maps event listener on map center
 (function(){
-	window.google.maps.event.addListener(map, "center_changed", wellLoved.getNearestPoint)
+	window.google.maps.event.addListener(map, "center_changed", wellLoved.getCoordinate)
 })();
