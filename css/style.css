@@ -470,7 +470,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 20px;
 }
 
-/* Get Started Section
+/* WebApp Section
 --------------------------------*/
 #webapp {
   background: #fff;
@@ -498,10 +498,39 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 0;
 }
 
+/* About Section
+--------------------------------*/
+#about {
+  background: #f6f6f6;
+  padding: 80px 0;
+}
+
+#about .about-container {
+  background: url(../img/about-img.jpg) left top no-repeat;
+}
+
+#about .about-content {
+  background: #fff;
+}
+
+#about .about-title {
+  color: #333;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+#about .about-text {
+  line-height: 26px;
+}
+
+#about .about-text:last-child {
+  margin-bottom: 0;
+}
+
 /* Team Section
 --------------------------------*/
 #team {
-  background: #f6f6f6;
+  background: #fff;
   padding: 80px 0 60px 0;
 }
 
