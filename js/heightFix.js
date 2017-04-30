@@ -8,7 +8,7 @@ jQuery(
         */
         $("#hero").css("height", $( window ).height() + "px")
         $("#webapp").css("padding", $( window ).height()*0.05 + "px 0")
-        $("#map").css("height", $( window ).height()*0.7 + "px")
+        $("#map").css("height", $( window ).height()*0.8 + "px")
       }
 
       init()
