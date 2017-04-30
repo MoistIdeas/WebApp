@@ -5154,8 +5154,8 @@ wellLoved = function() {
             return R * c;
         },
         getCoordinate: function( event ){
-        	this.targetLocation = { "targetLatitude":map.center.lat(), "targetLongitude":map.center.lng() };
-        	console.log(this.targetLocation);
+        	window.wellLoved.targetLocation = { "targetLatitude":map.center.lat(), "targetLongitude":map.center.lng() };
+        	console.log(window.wellLoved.targetLocation);
         },
         getNearestPoint: function() {
         	console.log("what");
