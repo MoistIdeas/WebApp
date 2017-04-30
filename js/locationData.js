@@ -5156,6 +5156,7 @@ wellLoved = function() {
         },
         getCoordinate: function( event ){
         	window.wellLoved.targetLocation = { "targetLatitude":map.center.lat(), "targetLongitude":map.center.lng() };
+            var customLatLng =  new google.maps.LatLng({lat: map.center.lat(), lng: map.center.lng()}); 
         	window.wellLoved.getNearestPoint();
         },
         getNearestPoint: function() {
