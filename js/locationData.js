@@ -5160,9 +5160,15 @@ wellLoved = function() {
         getNearestPoint: function() {
         	var distances = [];
         	var targetLocation = window.wellLoved.targetLocation;
-        	for (var i; i<rawData.length; i++){
+        	console.log(targetLocation);
+        	for(var i = 0; i<rawData.length; i++){
+        		console.log(targetLocation.targetLatitude);
+        		console.log(targetLocation.targetLatitude);
+        		console.log(rawData[i].lat);
+        		console.log(rawData[i].long);
         		distances.push(this.calculateDistance(targetLocation.targetLatitude, targetLocation.targetLongitude, rawData[i].lat, rawData[i].long));
         	};
+        	console.log(distances);
         	window.wellLoved.distances = distances;
         }
     }
