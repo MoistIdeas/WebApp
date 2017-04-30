@@ -5184,7 +5184,7 @@ wellLoved = function() {
         	// $("#forecast_embed").attr("src", "http://forecast.io/embed/#lat=" + window.wellLoved.targetLocation.targetLatitude +"&lon=" + window.wellLoved.targetLocation.targetLongitude + "&name=Your Location");
         	$("<iframe id=\"forecast_embed\" type=\"text/html\" frameborder=\"0\" height=\"245\" width=\"100%\" src=\"https://forecast.io/embed/#lat=" + window.wellLoved.targetLocation.targetLatitude + "&lon=" + window.wellLoved.targetLocation.targetLongitude + "&name=Your Location&units=uk\"></iframe>").insertAfter($("#weatherwidget"));
         	$("<h4 id=\"samplingDistance\" style=\"text-align: center\">Sampling Distance from You: " + Math.round(window.wellLoved.nearestPointData.distance * 100)/100 + "km</h4>").insertAfter($("#forecast_embed"));
-        	$("<h4 id=\"soilMoisture\" style=\"text-align: center\">Soil Moisture: " + Math.round(window.wellLoved.nearestPointData.soilMoisture) + "mL/cm<sup>3</sup></h4>").insertAfter($("#samplingDistance"));
+        	$("<h4 id=\"soilMoisture\" style=\"text-align: center\">Soil Moisture: " + Math.round(window.wellLoved.nearestPointData.soilMoisture*100)/100 + "mL/cm<sup>3</sup></h4>").insertAfter($("#samplingDistance"));
         	$("<h1 id=\"soilRating\" style=\"text-align: center\">Soil Quality Rating:<br> " + window.wellLoved.nearestPointData.soilRating + "/10</h1>").insertAfter($("#soilMoisture"));
         }
     }
