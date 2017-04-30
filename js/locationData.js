@@ -5156,20 +5156,23 @@ wellLoved = function() {
         },
         getCoordinate: function( event ){
         	window.wellLoved.targetLocation = { "targetLatitude":map.center.lat(), "targetLongitude":map.center.lng() };
+        	this.getNearestPoint();
         },
         getNearestPoint: function() {
         	var distances = [];
         	var targetLocation = window.wellLoved.targetLocation;
-        	console.log(targetLocation);
-        	for(var i = 0; i<rawData.length; i++){
-        		console.log(targetLocation.targetLatitude);
-        		console.log(targetLocation.targetLatitude);
-        		console.log(rawData[i].lat);
-        		console.log(rawData[i].long);
+        	for (var i = 0; i<rawData.length; i++){
         		distances.push(this.calculateDistance(targetLocation.targetLatitude, targetLocation.targetLongitude, rawData[i].lat, rawData[i].long));
-        	};
-        	console.log(distances);
+        	}
         	window.wellLoved.distances = distances;
+        	for (var j = 0; j<distances.length; j++){
+        		if (typeof(nearestPoint) === "undefined"){
+        			var nearestPoint = {"arrayIndex":j, "distance":distances[j]};
+        		} else if (distances[j] <= nearestPoint.distance ){
+        				nearestPoint = {"arrayIndex":j, "distance":distances[j]};
+        		}
+        	}
+        	window.wellLoved.nearestPoint = nearestPoint;
         }
     }
 }();
