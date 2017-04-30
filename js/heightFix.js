@@ -7,8 +7,7 @@ jQuery(
           You can set multiple things here.
         */
         $("#hero").css("height", $( window ).height() + "px")
-        // $("#webapp").css("height", $( window ).height()*0.8 + "px")
-        // $("#webapp").css("padding", $( window ).height()*0.05 + "px")
+        $("#webapp").css("padding", $( window ).height()*0.05 + "px")
         $("#map").css("height", $( window ).height()*0.7 + "px")
       }
 
