@@ -5163,8 +5163,5 @@ wellLoved = function() {
     }
 }();
 
-// get Target Location
-window.wellLoved.getCoordinate();
-
 // set Google Maps event listener on map center
 window.google.maps.event.addListener(map, "center_changed", wellLoved.getCoordinate);
