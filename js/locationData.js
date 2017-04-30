@@ -5155,10 +5155,14 @@ wellLoved = function() {
         },
         getCoordinate: function( event ){
         	window.wellLoved.targetLocation = { "targetLatitude":map.center.lat(), "targetLongitude":map.center.lng() };
-        	console.log(window.wellLoved.targetLocation);
         },
         getNearestPoint: function() {
-        	console.log("what");
+        	var distances = [];
+        	var targetLocation = window.wellLoved.targetLocation;
+        	for (var i; i<rawData.length; i++){
+        		distances.push(this.calculateDistance(targetLocation.targetLatitude,targetLocation.targetLongitude,rawData[i].lat,rawData[i].long);
+        	};
+        	window.wellLoved.distances = distances;
         }
     }
 }();
