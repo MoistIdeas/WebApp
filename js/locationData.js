@@ -5138,7 +5138,7 @@ wellLoved = function() {
     }];
 
     return {
-        getNearestPoint: function() {
+        calculateDistance: function() { 
             var radians = Array.prototype.map.call(arguments, function(deg) {
                 return deg / 180.0 * Math.PI;
             });
@@ -5152,6 +5152,20 @@ wellLoved = function() {
             var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
             var c = 2 * Math.asin(Math.sqrt(a));
             return R * c;
+        },
+        getCoordinate: function( event ){
+        	var getLatitude = event.latLng.lat();
+        	var getLongitude = event.latLng.lng();
+        	this.targetLocation = { "targetLatitude":getLatitude, "targetLongitude":getLongitude};
+        	console.log(this.targetLocation);
+        },
+        getNearestPoint: function() {
+        	console.log("what");
         }
     }
 }();
+
+// set Google Maps event listener on map center
+(function(){
+	window.google.maps.event.addListener(map, "center_changed", wellLoved.getNearestPoint)
+})();
