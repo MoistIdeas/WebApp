@@ -476,10 +476,6 @@ body.mobile-nav-active #mobile-nav-toggle {
   background: #fff;
 }
 
-#webapp .webapp-container {
-  background: url(../img/webapp-img.jpg) left top no-repeat;
-}
-
 #webapp .webapp-content {
   background: #fff;
 }
