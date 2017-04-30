@@ -5139,7 +5139,8 @@ wellLoved = function() {
 
     return {
         calculateDistance: function() { 
-            var radians = Array.prototype.map.call(arguments, function(deg) {
+        	// input data as window.wellLoved.calculateDistance(targetLat, targetLong, rawLat, rawLong)
+            var radians = Array.prototype.map.call(arguments, function(deg) { 
                 return deg / 180.0 * Math.PI;
             });
             var lat1 = radians[0],
@@ -5151,7 +5152,7 @@ wellLoved = function() {
             var dLon = lon2 - lon1;
             var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.sin(dLon / 2) * Math.sin(dLon / 2) * Math.cos(lat1) * Math.cos(lat2);
             var c = 2 * Math.asin(Math.sqrt(a));
-            return R * c;
+            return R * c; // returns distance in km
         },
         getCoordinate: function( event ){
         	window.wellLoved.targetLocation = { "targetLatitude":map.center.lat(), "targetLongitude":map.center.lng() };
@@ -5160,7 +5161,7 @@ wellLoved = function() {
         	var distances = [];
         	var targetLocation = window.wellLoved.targetLocation;
         	for (var i; i<rawData.length; i++){
-        		distances.push(this.calculateDistance(targetLocation.targetLatitude,targetLocation.targetLongitude,rawData[i].lat,rawData[i].long);
+        		distances.push(this.calculateDistance(targetLocation.targetLatitude, targetLocation.targetLongitude, rawData[i].lat, rawData[i].long));
         	};
         	window.wellLoved.distances = distances;
         }
