@@ -33,6 +33,8 @@
             zoom: 12
         });
         infoWindow = new google.maps.InfoWindow;
+        // set Google Maps event listener on map center
+        window.google.maps.event.addListener(map, "idle", wellLoved.getCoordinate);
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
@@ -268,8 +270,8 @@
     <script src="js/heightFix.js"></script>
 
     <!-- Google Maps Scripts -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgVpvXOIPs6taNBWGMjc3ssXtwjWqfjgY&callback=initMap" defer></script>
-    <script src="js/locationData.js" defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI6jqhxPYeivaNKV70L70KkbqPPbTmFJA&callback=initMap" async defer></script>
+    <script src="js/locationData.js"></script>
 
     <!-- Template Specisifc Custom Javascript File -->
     <script src="js/custom.js"></script>
