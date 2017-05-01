@@ -1,281 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <title>Well-Loved</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
-
-    <!-- Bootstrap CSS File -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Libraries CSS Files -->
-    <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/animate-css/animate.min.css" rel="stylesheet">
-
-    <!-- Main Stylesheet File -->
-    <link href="css/style.css" rel="stylesheet">
-	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png"/>
-    <script src="js/locationData.js"></script>
-<script>
-    var map;
-
-    function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-            center: {
-                lat: 43.646193,
-                lng: -79.397451
-            },
-            zoom: 12
-        });
-        infoWindow = new google.maps.InfoWindow;
-        // set Google Maps event listener on map center
-        window.google.maps.event.addListener(map, "idle", window.wellLoved.getCoordinate);
-
-        // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
-            var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-            };
-
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('You are here.');
-            infoWindow.open(map);
-            map.setCenter(pos);
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
-        }
-      }
-
-      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-        infoWindow.setPosition(pos);
-        infoWindow.setContent(browserHasGeolocation ?
-                              'Error: The Geolocation service failed.' :
-                              'Error: Your browser doesn\'t support geolocation.');
-        infoWindow.open(map);
-    }
-</script>
-</head>
-
-<body>
-    <div id="preloader"></div>
-
-    <!--==========================
-  Hero Section
-============================-->
-    <section id="hero">
-        <div class="hero-container">
-            <div class="wow fadeIn">
-                <h1>Well-Loved</h1>
-                <h2>We find <span class="rotating">moisture, wetness, beauty</span></h2>
-                <div class="actions">
-                    <a href="#webapp" class="btn-get-started">Dive In</a>
+    <head>
+        <meta charset="utf-8">
+        <title>Well-Loved</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+        <!-- Bootstrap CSS File -->
+        <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Libraries CSS Files -->
+        <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link href="lib/animate-css/animate.min.css" rel="stylesheet">
+        <!-- Main Stylesheet File -->
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png"/>
+        <script src="js/locationData.js"></script>
+        <script>
+            var map;
+            
+            function initMap() {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: {
+                        lat: 43.646193,
+                        lng: -79.397451
+                    },
+                    zoom: 12
+                });
+                infoWindow = new google.maps.InfoWindow;
+                // set Google Maps event listener on map center
+                window.google.maps.event.addListener(map, "idle", window.wellLoved.getCoordinate);
+            
+                // Try HTML5 geolocation.
+                if (navigator.geolocation) {
+                  navigator.geolocation.getCurrentPosition(function(position) {
+                    var pos = {
+                      lat: position.coords.latitude,
+                      lng: position.coords.longitude
+                    };
+            
+                    infoWindow.setPosition(pos);
+                    infoWindow.setContent('You are here.');
+                    infoWindow.open(map);
+                    map.setCenter(pos);
+                  }, function() {
+                    handleLocationError(true, infoWindow, map.getCenter());
+                  });
+                } else {
+                  // Browser doesn't support Geolocation
+                  handleLocationError(false, infoWindow, map.getCenter());
+                }
+              }
+            
+              function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(browserHasGeolocation ?
+                                      'Error: The Geolocation service failed.' :
+                                      'Error: Your browser doesn\'t support geolocation.');
+                infoWindow.open(map);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="preloader"></div>
+        <!--==========================
+            Hero Section
+            ============================-->
+        <section id="hero">
+            <div class="hero-container">
+                <div class="wow fadeIn">
+                    <h1>Well-Loved</h1>
+                    <h2>We find <span class="rotating">moisture, wetness, beauty</span></h2>
+                    <div class="actions">
+                        <a href="#webapp" class="btn-get-started">Dive In</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!--==========================
-  Header Section
-============================-->
-    <header id="header">
-        <div class="container">
-
-            <div id="logo" class="pull-left">
-                <h1><a href="#hero">Well-Loved</a></h1>
+        </section>
+        <!--==========================
+            Header Section
+            ============================-->
+        <header id="header">
+            <div class="container">
+                <div id="logo" class="pull-left">
+                    <h1><a href="#hero">Well-Loved</a></h1>
+                </div>
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li class="menu-active"><a href="#hero">Home</a></li>
+                        <li><a href="#webapp">Web App</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#team">Team</a></li>
+                    </ul>
+                </nav>
+                <!-- #nav-menu-container -->
             </div>
-
-            <nav id="nav-menu-container">
-                <ul class="nav-menu">
-                    <li class="menu-active"><a href="#hero">Home</a></li>
-                    <li><a href="#webapp">Web App</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#team">Team</a></li>
-                </ul>
-            </nav>
-            <!-- #nav-menu-container -->
-        </div>
-    </header>
-    <!-- #header -->
-
-    <!--==========================
-  Webapp Section
-============================-->
-    <section id="webapp">
-        <div class="container wow fadeInUp">
-            <div class="row">
-                <div class="col-md-8">
-                    <div id="map"></div>
-                </div>
-                <div class="col-md-4">
-                <div id="weatherwidget">
-                </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--==========================
-  About Section
-============================-->
-  <section id="about">
-    <div class="container wow fadeInUp">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="section-title">About Us</h3>
-          <div class="section-title-divider"></div>
-        </div>
-      </div>
-    </div>
-    <div class="container about-container wow fadeInUp">
-      <div class="row">
-          <h2 class="about-title">About Well-Loved</h2>
-          <p class="about-text">
-            Well-Loved is an interactive web app that provides easy access to soil moisture content, and local weather conditions.  Our soil moisture content comes fresh from the SMAP satellite (Soil Moisture Active Passive) no older than 1 day.  
-          </p>
-          <p class="about-text">
-            Designed with a simplistic layout, everyone from farmers and local gardeners to governments and research organizations can seamlessly access the information that is relevant to their needs.
-          </p>
-          <p class="about-text">
-            Additional information about the SMAP NASA mission can be found <a href="https://smap.jpl.nasa.gov/mission/description/">here</a>.
-          </p>
-      </div>
-    </div>
-  </section>
-
-    <!--==========================
-  Team Section
-============================-->
-    <section id="team">
-        <div class="container wow fadeInUp">
-            <div class="row">
-                <div class="col-md-12">
-                    <h3 class="section-title">Our Team</h3>
-                    <div class="section-title-divider"></div>
-                    <p class="section-description">There's more to life than being really, really, ridiculously good-looking (like water).</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="member">
-                        <div class="pic"><img src="img/Ayhan.jpg" alt=""></div>
-                        <h4>Ayhan Isaacs</h4>
-                        <span>Scientist</span>
-                        <div class="social">
-                            <a href="https://twitter.com/ayhanisaacs"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.linkedin.com/in/akisaacs/"><i class="fa fa-linkedin"></i></a>
+        </header>
+        <!-- #header -->
+        <!--==========================
+            Webapp Section
+            ============================-->
+        <section id="webapp">
+            <div class="container wow fadeInUp">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div id="map"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="weatherwidget">
                         </div>
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="member">
-                        <div class="pic"><img src="img/Bliss.jpg" alt=""></div>
-                        <h4>Bliss Man</h4>
-                        <span>Developer</span>
-                        <div class="social">
-                            <a href="https://twitter.com/blissmantwit"><i class="fa fa-twitter"></i></a>
-                            <a href="https://github.com/blissman"><i class="fa fa-github"></i></a>
-                            <a href="https://ca.linkedin.com/in/blissman"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="member">
-                        <div class="pic"><img src="img/Dema.jpg" alt=""></div>
-                        <h4>Dema Abu Adas</h4>
-                        <span>Developer</span>
-                        <div class="social">
-                            <a href="https://github.com/De-ma"><i class="fa fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/dabuadas/"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                </div>
-
-                <div class="col-md-4">
-                    <div class="member">
-                        <div class="pic"><img src="img/Janet.jpg" alt=""></div>
-                        <h4>Janet Kelly</h4>
-                        <span>Creative</span>
-                        <div class="social">
-                            <a href="https://twitter.com/Janet_E_Kelly"><i class="fa fa-twitter"></i></a>
-                            <a href="https://www.linkedin.com/in/janetekelly/"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="member">
-                        <div class="pic"><img src="img/Matt.jpg" alt=""></div>
-                        <h4>Matt Dermody</h4>
-                        <span>Analyst</span>
-                        <div class="social">
-                            <a href="https://www.linkedin.com/in/matthew-dermody-9014a355/"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-2">
-                </div>
-
             </div>
-        </div>
-    </section>
-
-    <!--==========================
-  Footer
-============================-->
-    <footer id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="copyright">
-                        &copy; Copyright <strong>Well-Loved</strong>. All Rights Reserved
+        </section>
+        <!--==========================
+            About Section
+            ============================-->
+        <section id="about">
+            <div class="container wow fadeInUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="section-title">About Us</h3>
+                        <div class="section-title-divider"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <!-- #footer -->
-
-    <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-
-    <!-- Required JavaScript Libraries -->
-    <script src="lib/jquery/jquery.min.js"></script>
-    <script src="lib/jquery/jquery-migrate.min.js"></script>
-    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="lib/superfish/hoverIntent.js"></script>
-    <script src="lib/superfish/superfish.min.js"></script>
-    <script src="lib/morphext/morphext.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/stickyjs/sticky.js"></script>
-    <script src="lib/easing/easing.js"></script>
-
-    <!-- heighFix.js for map sizing -->
-    <script src="js/heightFix.js"></script>
-
-    <!-- Google Maps Scripts -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI6jqhxPYeivaNKV70L70KkbqPPbTmFJA&callback=initMap" async defer></script>
-
-    <!-- Template Specisifc Custom Javascript File -->
-    <script src="js/custom.js"></script>
-
-</body>
-
+            <div class="container about-container wow fadeInUp">
+                <div class="row">
+                    <h2 class="about-title">About Well-Loved</h2>
+                    <p class="about-text">
+                        Well-Loved is an interactive web app that provides easy access to soil moisture content, and local weather conditions.  Our soil moisture content comes fresh from the SMAP satellite (Soil Moisture Active Passive) no older than 1 day.  
+                    </p>
+                    <p class="about-text">
+                        Designed with a simplistic layout, everyone from farmers and local gardeners to governments and research organizations can seamlessly access the information that is relevant to their needs.
+                    </p>
+                    <p class="about-text">
+                        Additional information about the SMAP NASA mission can be found <a href="https://smap.jpl.nasa.gov/mission/description/">here</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!--==========================
+            Team Section
+            ============================-->
+        <section id="team">
+            <div class="container wow fadeInUp">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3 class="section-title">Our Team</h3>
+                        <div class="section-title-divider"></div>
+                        <p class="section-description">There's more to life than being really, really, ridiculously good-looking (like water).</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="member">
+                            <div class="pic"><img src="img/Ayhan.jpg" alt=""></div>
+                            <h4>Ayhan Isaacs</h4>
+                            <span>Scientist</span>
+                            <div class="social">
+                                <a href="https://twitter.com/ayhanisaacs"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/in/akisaacs/"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="member">
+                            <div class="pic"><img src="img/Bliss.jpg" alt=""></div>
+                            <h4>Bliss Man</h4>
+                            <span>Developer</span>
+                            <div class="social">
+                                <a href="https://twitter.com/blissmantwit"><i class="fa fa-twitter"></i></a>
+                                <a href="https://github.com/blissman"><i class="fa fa-github"></i></a>
+                                <a href="https://ca.linkedin.com/in/blissman"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="member">
+                            <div class="pic"><img src="img/Dema.jpg" alt=""></div>
+                            <h4>Dema Abu Adas</h4>
+                            <span>Developer</span>
+                            <div class="social">
+                                <a href="https://github.com/De-ma"><i class="fa fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/dabuadas/"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                    <div class="col-md-4">
+                        <div class="member">
+                            <div class="pic"><img src="img/Janet.jpg" alt=""></div>
+                            <h4>Janet Kelly</h4>
+                            <span>Creative</span>
+                            <div class="social">
+                                <a href="https://twitter.com/Janet_E_Kelly"><i class="fa fa-twitter"></i></a>
+                                <a href="https://www.linkedin.com/in/janetekelly/"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="member">
+                            <div class="pic"><img src="img/Matt.jpg" alt=""></div>
+                            <h4>Matt Dermody</h4>
+                            <span>Analyst</span>
+                            <div class="social">
+                                <a href="https://www.linkedin.com/in/matthew-dermody-9014a355/"><i class="fa fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--==========================
+            Footer
+            ============================-->
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright">
+                            &copy; Copyright <strong>Well-Loved</strong>. All Rights Reserved
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- #footer -->
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+        <!-- Required JavaScript Libraries -->
+        <script src="lib/jquery/jquery.min.js"></script>
+        <script src="lib/jquery/jquery-migrate.min.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="lib/superfish/hoverIntent.js"></script>
+        <script src="lib/superfish/superfish.min.js"></script>
+        <script src="lib/morphext/morphext.min.js"></script>
+        <script src="lib/wow/wow.min.js"></script>
+        <script src="lib/stickyjs/sticky.js"></script>
+        <script src="lib/easing/easing.js"></script>
+        <!-- heighFix.js for map sizing -->
+        <script src="js/heightFix.js"></script>
+        <!-- Google Maps Scripts -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBI6jqhxPYeivaNKV70L70KkbqPPbTmFJA&callback=initMap" async defer></script>
+        <!-- Template Specisifc Custom Javascript File -->
+        <script src="js/custom.js"></script>
+    </body>
 </html>

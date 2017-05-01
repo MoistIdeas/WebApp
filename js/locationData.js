@@ -5139,8 +5139,8 @@ wellLoved = function() {
 
     return {
         calculateDistance: function() { // uses the Haversine formula to calculate distance from target
-        	// input data as window.wellLoved.calculateDistance(targetLat, targetLong, rawLat, rawLong)
-            var radians = Array.prototype.map.call(arguments, function(deg) { 
+            // input data as window.wellLoved.calculateDistance(targetLat, targetLong, rawLat, rawLong)
+            var radians = Array.prototype.map.call(arguments, function(deg) {
                 return deg / 180.0 * Math.PI;
             });
             var lat1 = radians[0],
@@ -5154,39 +5154,54 @@ wellLoved = function() {
             var c = 2 * Math.asin(Math.sqrt(a));
             return R * c; // returns distance in km
         },
-        getCoordinate: function( event ){
-        	window.wellLoved.targetLocation = { "targetLatitude":map.center.lat(), "targetLongitude":map.center.lng() };
-            var customLatLng =  new google.maps.LatLng({lat: map.center.lat(), lng: map.center.lng()}); 
-        	window.wellLoved.getNearestPoint();
+        getCoordinate: function(event) {
+            window.wellLoved.targetLocation = {
+                "targetLatitude": map.center.lat(),
+                "targetLongitude": map.center.lng()
+            };
+            var customLatLng = new google.maps.LatLng({
+                lat: map.center.lat(),
+                lng: map.center.lng()
+            });
+            window.wellLoved.getNearestPoint();
         },
         getNearestPoint: function() {
-        	var distances = [];
-        	var targetLocation = window.wellLoved.targetLocation;
-        	// calculate distances
-        	for (var i = 0; i<rawData.length; i++){
-        		distances.push(this.calculateDistance(targetLocation.targetLatitude, targetLocation.targetLongitude, rawData[i].lat, rawData[i].long));
-        	}
-        	// run through distances and calculate nearest point
-        	for (var j = 0; j<distances.length; j++){
-        		if (typeof(nearestPoint) === "undefined"){
-        			var nearestPoint = {"arrayIndex":j, "distance":distances[j]};
-        		} else if (distances[j] <= nearestPoint.distance ){
-        				nearestPoint = {"arrayIndex":j, "distance":distances[j]};
-        		}
-        	}
-        	window.wellLoved.nearestPointData = {"distance":nearestPoint.distance, "soilMoisture":rawData[nearestPoint.arrayIndex].soil, "soilRating":rawData[nearestPoint.arrayIndex].soilValue};
-        	window.wellLoved.updateDisplay();
+            var distances = [];
+            var targetLocation = window.wellLoved.targetLocation;
+            // calculate distances
+            for (var i = 0; i < rawData.length; i++) {
+                distances.push(this.calculateDistance(targetLocation.targetLatitude, targetLocation.targetLongitude, rawData[i].lat, rawData[i].long));
+            }
+            // run through distances and calculate nearest point
+            for (var j = 0; j < distances.length; j++) {
+                if (typeof(nearestPoint) === "undefined") {
+                    var nearestPoint = {
+                        "arrayIndex": j,
+                        "distance": distances[j]
+                    };
+                } else if (distances[j] <= nearestPoint.distance) {
+                    nearestPoint = {
+                        "arrayIndex": j,
+                        "distance": distances[j]
+                    };
+                }
+            }
+            window.wellLoved.nearestPointData = {
+                "distance": nearestPoint.distance,
+                "soilMoisture": rawData[nearestPoint.arrayIndex].soil,
+                "soilRating": rawData[nearestPoint.arrayIndex].soilValue
+            };
+            window.wellLoved.updateDisplay();
         },
-        updateDisplay: function(){
-        	$("#forecast_embed").remove();
-        	$("#samplingDistance").remove();
-        	$("#soilMoisture").remove();
-        	$("#soilRating").remove();
-        	// $("#forecast_embed").attr("src", "http://forecast.io/embed/#lat=" + window.wellLoved.targetLocation.targetLatitude +"&lon=" + window.wellLoved.targetLocation.targetLongitude + "&name=Your Location");
-        	$("<iframe id=\"forecast_embed\" type=\"text/html\" frameborder=\"0\" height=\"245\" width=\"100%\" src=\"https://forecast.io/embed/#lat=" + window.wellLoved.targetLocation.targetLatitude + "&lon=" + window.wellLoved.targetLocation.targetLongitude + "&name=Your Location&units=uk\"></iframe>").insertAfter($("#weatherwidget"));
-        	$("<h4 id=\"samplingDistance\" style=\"text-align: center\">Sampling Distance from You: " + Math.round(window.wellLoved.nearestPointData.distance * 100)/100 + "km</h4>").insertAfter($("#forecast_embed"));
-        	$("<h4 id=\"soilMoisture\" style=\"text-align: center\">Soil Moisture: " + Math.round(window.wellLoved.nearestPointData.soilMoisture*100)/100 + "mL/cm<sup>3</sup></h4>").insertAfter($("#samplingDistance"));
-        	$("<h1 id=\"soilRating\" style=\"text-align: center\">Soil Moisture Rating:<br> " + window.wellLoved.nearestPointData.soilRating + "/10</h1>").insertAfter($("#soilMoisture"));
+        updateDisplay: function() {
+            $("#forecast_embed").remove();
+            $("#samplingDistance").remove();
+            $("#soilMoisture").remove();
+            $("#soilRating").remove();
+            $("<iframe id=\"forecast_embed\" type=\"text/html\" frameborder=\"0\" height=\"245\" width=\"100%\" src=\"https://forecast.io/embed/#lat=" + window.wellLoved.targetLocation.targetLatitude + "&lon=" + window.wellLoved.targetLocation.targetLongitude + "&name=Your Location&units=uk\"></iframe>").insertAfter($("#weatherwidget"));
+            $("<h4 id=\"samplingDistance\" style=\"text-align: center\">Sampling Distance from You: " + Math.round(window.wellLoved.nearestPointData.distance * 100) / 100 + "km</h4>").insertAfter($("#forecast_embed"));
+            $("<h4 id=\"soilMoisture\" style=\"text-align: center\">Soil Moisture: " + Math.round(window.wellLoved.nearestPointData.soilMoisture * 100) / 100 + "mL/cm<sup>3</sup></h4>").insertAfter($("#samplingDistance"));
+            $("<h1 id=\"soilRating\" style=\"text-align: center\">Soil Moisture Rating:<br> " + window.wellLoved.nearestPointData.soilRating + "/10</h1>").insertAfter($("#soilMoisture"));
         }
     }
 }();
