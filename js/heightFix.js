@@ -8,7 +8,11 @@ jQuery(
         */
         $("#hero").css("height", $( window ).height() + "px")
         $("#webapp").css("padding", $( window ).height()*0.05 + "px 0")
-        $("#map").css("height", $( window ).height()*0.8 + "px")
+        if ($(window).height() < $( "#infopane" ).height()){
+          $("#map").css("height", $( "#infopane" ).height() + "px")
+        } else {
+          $("#map").css("height", $( window ).height()*0.8 + "px")
+        }
       }
 
       init()
