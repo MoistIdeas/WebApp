@@ -5192,4 +5192,4 @@ wellLoved = function() {
 }();
 
 // set Google Maps event listener on map center
-window.google.maps.event.addListener(map, "center_changed", wellLoved.getCoordinate);
+window.google.maps.event.addListener(map, "idle", wellLoved.getCoordinate);
