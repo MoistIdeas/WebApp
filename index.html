@@ -34,7 +34,7 @@
         });
         infoWindow = new google.maps.InfoWindow;
         // set Google Maps event listener on map center
-        window.google.maps.event.addListener(map, "idle", wellLoved.getCoordinate);
+        window.google.maps.event.addListener(map, "idle", window.wellLoved.getCoordinate);
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
